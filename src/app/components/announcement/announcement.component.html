@@ -1,0 +1,28 @@
+<div class="bg-white p-4 rounded-md">
+    <div class="flex items-center justify-between">
+      <h1 class="text-xl font-semibold">Announcements</h1>
+      <span class="text-xs text-gray-400">View All</span>
+    </div>
+    <div *ngIf="announcement?.length >0 " class="flex flex-col gap-4 mt-4">
+      <div *ngFor="let ann of announcement" class="bg-lamaSkyLight rounded-md p-4">
+        <div class="flex items-center justify-between">
+          <h2 class="font-medium">{{ann.title}}</h2>
+          <span class="text-xs text-gray-400 bg-white rounded-md px-1 py-1">
+            {{commonService.formatDate(ann.date)}}
+          </span>
+        </div>
+        <p class="text-sm text-gray-400 mt-1">
+         {{ann.description}}
+        </p>
+      </div>
+ 
+    </div>
+    <div *ngIf="announcement?.length ===0 " class="flex flex-col gap-4 mt-4">
+        <div class="bg-lamaSkyLight rounded-md p-4">
+          <p class="text-sm text-gray-400 text-center">
+          Don't have any announcement today
+          </p>
+        </div>
+   
+      </div>
+  </div>

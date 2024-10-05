@@ -1,0 +1,13 @@
+input:focus{
+    outline: none;
+}
+textarea:focus{
+    outline: none;
+}
+select:focus{
+    outline: none;
+}
+input, textarea{
+    border-bottom: 1px solid #EDF9FD;
+
+}

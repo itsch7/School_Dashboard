@@ -1,0 +1,14 @@
+<div class="mt-4 text-sm">
+  <div *ngFor="let item of Navbar" class="flex flex-col gap-2" >
+    <span class="hidden lg:block text-gray-400 font-light my-4">
+      {{item.title}}
+    </span>
+    <a (click)="onNavigate(menu)" *ngFor="let menu of item.items"
+      class="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 md:px-2 rounded-md hover:bg-lamaSkyLight cursor-pointer"
+      [ngClass]="menu.label ==selectedMenu ? 'bg-lamaPurple': ''"
+    >
+      <img [src]="menu.icon" alt="" width="20px" height="20px" />
+      <span class="hidden lg:block">{{menu.label}}</span>
+    </a>
+  </div>
+</div>

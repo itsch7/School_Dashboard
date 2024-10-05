@@ -1,0 +1,45 @@
+<table class="w-full mt-4">
+    <thead>
+      <tr  class="text-left text-gray-500 text-sm">
+          <th *ngFor="let col of columns" [ngClass]="col?.className">{{col.header}}</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr
+        *ngFor="let item of studentList"
+        class="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamaPurpleLight"
+      >
+        <td class="flex items-center gap-4 p-4">
+          <img
+            [src]=item.photo
+            alt=""
+            width=40px
+            height=40px
+            class="md:hidden xl:block w-10 h-10 rounded-full object-cover"
+          />
+          <div class="flex flex-col">
+            <h3 class="font-semibold">{{item.name}}</h3>
+            <p class="text-xs text-gray-500">{{item?.email}}</p>
+          </div>
+        </td>
+        <td class="hidden md:table-cell">{{item.teacherId}}</td>
+      <td class="hidden md:table-cell">{{item.subjects.join(",")}}</td>
+      <td class="hidden md:table-cell">{{item.classes.join(",")}}</td>
+      <td class="hidden md:table-cell">{{item.phone}}</td>
+      <td class="hidden md:table-cell">{{item.address}}</td>
+        <td>
+          <div class="flex items-center gap-2">
+            <a >
+              <button (click)="onView(item)" class="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
+                <img src="../../../../assets/public/view.png" alt="" width=16px height=16px />
+              </button>
+            </a>
+             <button *ngIf="commonService.role === 'admin'" class="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
+                <img src="../../../../assets/public/delete.png" alt="" width=16px height=16px  />
+           </button>
+           
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>

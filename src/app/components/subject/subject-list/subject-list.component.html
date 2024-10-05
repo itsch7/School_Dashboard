@@ -1,0 +1,29 @@
+<table class="w-full mt-4">
+    <thead>
+      <tr  class="text-left text-gray-500 text-sm">
+          <th *ngFor="let col of columns" [ngClass]="col?.className">{{col.header}}</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr
+        *ngFor="let item of studentList"
+        class="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamaPurpleLight"
+      >
+      <td class="flex items-center gap-4 p-4">{{item.name}}</td>
+      <td class="hidden md:table-cell">{{item.teachers.join(",")}}</td>
+        <td>
+          <div class="flex items-center gap-2">
+            <a >
+              <button class="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
+                <img src="../../../../assets/public/view.png" alt="" width=16px height=16px />
+              </button>
+            </a>
+             <button *ngIf="commonService.role === 'admin'" class="w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple">
+                <img src="../../../../assets/public/delete.png" alt="" width=16px height=16px  />
+           </button>
+           
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>

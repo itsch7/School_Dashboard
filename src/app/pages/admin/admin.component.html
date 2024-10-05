@@ -1,0 +1,35 @@
+<div class="p-4 flex gap-4 flex-col md:flex-row">
+    <div class="w-full lg:w-2/3 flex flex-col gap-8">
+      <div class="flex gap-4 justify-between flex-wrap">
+        <app-user-card type="student"></app-user-card>
+        <app-user-card type="teacher"></app-user-card>
+        <app-user-card type="parent"></app-user-card>
+        <app-user-card type="admin"></app-user-card>
+        <!-- <UserCard type="teacher" />
+        <UserCard type="parent" />
+        <UserCard type="staff" /> -->
+      </div>
+      <div class="flex gap-4 flex-col lg:flex-row">
+        <div class="w-full lg:w-1/3 h-[300px]">
+
+        <app-pie-charts></app-pie-charts>
+        </div>
+        <div class="w-full lg:w-2/3 h-[300px]">
+            <app-attendance-chart></app-attendance-chart>
+          <!-- <AttendanceChart /> -->
+        </div>
+      </div>
+      <div class="w-full h-[450px]">
+        <!-- <FinanceChart /> -->
+        <app-finance-chart></app-finance-chart>
+
+      </div>
+    </div>
+    <div class="w-full lg:w-1/3 flex flex-col gap-8">
+      <app-caledner></app-caledner>
+      <app-announcement></app-announcement>
+      <!-- <EventCalendar />
+
+      <Announcements/> -->
+    </div>
+  </div>

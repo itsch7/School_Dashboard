@@ -1,0 +1,108 @@
+<div class="flex flex-col w-full gap-y-4 p-4">
+  <div class="flex justify-between">
+    <h1 class="text-xl font-semibold">Create a new Student</h1>
+   <span class="flex justify-center items-center w-[24px] h-[24px]">
+          <mat-icon (click)="onClose()" class="color-gray-500 cursor-pointer">close</mat-icon>
+   </span>
+  </div>
+  <form [formGroup]="studentForm" class="flex flex-col gap-y-[30px]">
+    <div class="flex gap-x-3 justify-center flex-col sm:flex-row">
+      <div class="flex flex-col gap-y-3  md:w-[32%] flex-1 justify-center relative">
+        <label >First Name</label>
+        <input type="text" formControlName="firstName" name="firstName">
+        <span class="absolute text-sm left-0 top-[100%] text-red-500" *ngIf="
+        studentForm.get('firstName').invalid && studentForm.get('firstName').touched && studentForm.get('firstName').errors?.['required'] 
+      ">First Name is required</span>
+      </div>
+      <div class="flex flex-col gap-y-3 md:w-[32%] flex-1 justify-center relative">
+        <label >Last Name</label>
+
+        <input type="text" formControlName="lastName" name="lastName"/>
+        <span class="absolute text-sm left-0 top-[100%] text-red-500" *ngIf="
+        studentForm.get('lastName').invalid && studentForm.get('lastName').touched && studentForm.get('lastName').errors?.['required'] 
+
+      ">Last Name is required</span>
+      </div>
+      <div class="flex flex-col gap-y-3 md:w-[32%] flex-1 justify-center relative">
+        <label  >Phone</label>
+
+        <input type="text" formControlName="phone" name="phone"/>
+        <span class="absolute text-sm left-0 top-[100%] text-red-500" *ngIf="
+        studentForm.get('phone').invalid && studentForm.get('phone').touched && studentForm.get('phone').errors?.['required'] 
+
+      ">Phone is required</span>
+      </div>
+    </div>
+    <div class="flex gap-x-3 justify-center flex-col sm:flex-row">
+      <div class="flex flex-col gap-y-3 md:w-[32%] flex-1 justify-center relative">
+        <label >Address</label>
+
+        <input  type="text" formControlName="address" name="address"/>
+        <span class="absolute text-sm left-0 top-[100%] text-red-500" *ngIf="
+        studentForm.get('address').invalid && studentForm.get('address').touched && studentForm.get('address').errors?.['required'] 
+
+      ">Address is required</span>
+      </div>
+      <div class="flex flex-col gap-y-3 md:w-[32%] flex-1 justify-center relative">
+        <label >Blood Type</label>
+
+        <input type="text" formControlName="bloodType" name="bloodType" />
+        <span class="absolute text-sm left-0 top-[100%] text-red-500" *ngIf="
+        studentForm.get('bloodType').invalid && studentForm.get('bloodType').touched && studentForm.get('bloodType').errors?.['required'] 
+
+      ">Blood Type is required</span>
+      </div>
+      <div class="flex flex-col gap-y-3 md:w-[32%] flex-1 justify-center relative">
+        <label >Birthday</label>
+
+        <input type="date"  formControlName="birthday" name="birthday"/>
+        <span class="absolute text-sm left-0 top-[100%] text-red-500" *ngIf="
+        studentForm.get('bloodType').invalid && studentForm.get('birthday').touched && studentForm.get('birthday').errors?.['required'] 
+
+      ">Birthday is required</span>
+      </div>
+    </div>
+    <div class="flex gap-x-3 flex-col sm:flex-row">
+      <div class="flex flex-col gap-2 w-full md:w-1/4 relative">
+        <label class="text-xs text-gray-500">Sex</label>
+        <select
+        type="text" formControlName="sex"
+        name="sex"
+          class="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
+        >
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <span class="absolute text-sm left-0 top-[100%] text-red-500" *ngIf="
+        studentForm.get('sex').invalid && studentForm.get('sex').touched && studentForm.get('sex').errors?.['required'] 
+
+      ">Sex is required</span>
+      </div>
+      <div class="flex flex-col gap-2 w-full md:w-1/3 justify-end">
+        <label
+          class="text-xs text-gray-500 flex items-center gap-2 cursor-pointer "
+          for="img"
+        >
+          <img
+            src="../../../../assets/public/upload.png"
+            alt=""
+            width="28px"
+            height="28px"
+          />
+          <span>Upload a photo</span>
+          @if(imagePreview){
+            <img  [src]="imagePreview" alt="Image Preview" class=" h-[60px] w-[60px] border-lamaSky border object-contain rounded-full" />
+             }
+        </label>
+        
+                 <input type="file" id="img" class="hidden" (change)="onFileSelected($event)"/>
+
+
+      </div>
+    </div>
+  </form>
+  <button (click)="onSubmit()" type="button" class="mt-2 bg-blue-400 text-white p-2 rounded-md">
+    {{ type === "create" ? "Create" : "Update" }}
+  </button>
+</div>
+

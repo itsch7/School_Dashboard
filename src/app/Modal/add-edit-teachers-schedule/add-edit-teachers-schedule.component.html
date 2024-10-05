@@ -1,0 +1,154 @@
+<div>
+  <div class="p-4 flex flex-col gap-y-3">
+    <div class="flex justify-between items-center">
+      <h1 class="text-xl font-semibold">Create a new Student</h1>
+      <span class="flex justify-center items-center w-[24px] h-[24px]">
+        <mat-icon (click)="onClose()" class="color-gray-500 cursor-pointer"
+          >close</mat-icon
+        >
+      </span>
+    </div>
+    <form [formGroup]="Schedule" class="flex flex-col gap-y-[30px]">
+      <div class="flex gap-x-3 justify-center flex-col sm:flex-row">
+        <div class="flex flex-col gap-2 w-full md:w-[48%] relative">
+          <label class="text-xs text-gray-500">Select Class</label>
+          <select
+            type="text"
+            formControlName="class"
+            name="class"
+            class="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full"
+          >
+            <option *ngFor="let class of teahcerClasses" [value]="class.id">
+              {{ class.name }}
+            </option>
+          </select>
+          <span
+            class="absolute text-sm left-0 top-[100%] text-red-500"
+            *ngIf="
+                    Schedule.get('class').invalid && Schedule.get('class').touched && Schedule.get('class').errors?.['required'] 
+            
+                  "
+            >Class is required</span
+          >
+        </div>
+
+        <div
+          class="flex flex-col gap-y-3 md:w-[48%] flex-1 justify-center relative"
+        >
+          <label>Date</label>
+
+          <input type="date" formControlName="date" name="date" />
+          <span
+            class="absolute text-sm left-0 top-[100%] text-red-500"
+            *ngIf="
+                    Schedule.get('date').invalid && Schedule.get('date').touched && Schedule.get('date').errors?.['required'] 
+            
+                  "
+            >Date is required
+          </span>
+        </div>
+      </div>
+
+      <div class="flex gap-x-3 justify-center flex-col sm:flex-row">
+        <div
+          class="flex flex-col gap-y-3 md:w-[48%] flex-1 justify-center relative"
+        >
+          <label>Start Time</label>
+
+          <input
+            type="text"
+            formControlName="start_time"
+            name="start_time"
+            readonly
+          />
+          <span
+            class="absolute text-sm left-0 top-[100%] text-red-500"
+            *ngIf="
+                    Schedule.get('start_time').invalid && Schedule.get('start_time').touched && Schedule.get('start_time').errors?.['required'] 
+            
+                  "
+            >Start Time is required
+          </span>
+        </div>
+
+        <div
+          class="flex flex-col gap-y-3 md:w-[48%] flex-1 justify-center relative"
+        >
+          <label>End Time</label>
+
+          <input
+            type="text"
+            formControlName="end_time"
+            name="end_time"
+            readonly
+          />
+          <span
+            class="absolute text-sm left-0 top-[100%] text-red-500"
+            *ngIf="
+                    Schedule.get('end_time').invalid && Schedule.get('end_time').touched && Schedule.get('end_time').errors?.['required'] 
+            
+                  "
+            >End Time is required
+          </span>
+        </div>
+      </div>
+      <div class="flex gap-x-3 justify-center flex-col sm:flex-row">
+        <div
+          class="flex flex-col gap-y-3 md:w-[48%] flex-1 justify-center relative"
+        >
+          <label> Subject</label>
+          <input type="text" formControlName="subject" name="subject" />
+
+          <span
+            class="absolute text-sm left-0 top-[48%] text-red-500"
+            *ngIf="
+                        Schedule.get('subject').invalid && Schedule.get('subject').touched && Schedule.get('subject').errors?.['required'] 
+                      "
+            >Subject is required</span
+          >
+        </div>
+        <div
+          class="flex flex-col gap-y-3 md:w-[48%] flex-1 justify-center relative"
+        >
+          <label> Color</label>
+          <input type="color" formControlName="color" name="color" />
+
+          <span
+            class="absolute text-sm left-0 top-[100%] text-red-500"
+            *ngIf="
+                        Schedule.get('color').invalid && Schedule.get('color').touched && Schedule.get('color').errors?.['required'] 
+                      "
+            >Color is required</span
+          >
+        </div>
+      </div>
+      <div class="flex gap-x-3 justify-center flex-col sm:flex-row">
+        <div class="flex flex-col gap-y-3 flex-1 justify-center relative">
+          <label>Class Notes</label>
+          <textarea
+            type="text"
+            formControlName="notes"
+            name="notes"
+            rows="4"
+            cols="50"
+          >
+          </textarea>
+          <span
+            class="absolute text-sm left-0 top-[100%] text-red-500"
+            *ngIf="
+                        Schedule.get('notes').invalid && Schedule.get('notes').touched && Schedule.get('notes').errors?.['required'] 
+                      "
+            >Notes is required</span
+          >
+        </div>
+      </div>
+    </form>
+    <button
+      (click)="onSubmit()"
+      type="button"
+      class="mt-2 bg-blue-400 text-white p-2 rounded-md"
+    >
+      {{ type === "create" ? "Create" : "Update" }}
+    </button>
+  </div>
+</div>

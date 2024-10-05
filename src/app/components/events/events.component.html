@@ -1,0 +1,24 @@
+<div class="bg-white p-4 rounded-md">
+    <div class="flex items-center justify-between">
+      <h1 class="text-xl font-semibold my-4">Events</h1>
+      <img src="../../../assets/public/moreDark.png" alt="" width=20px height=20px />
+    </div>
+    <div *ngIf="events?.length > 0" class="flex flex-col gap-4">
+        <div *ngFor="let event of events"
+          class="p-5 rounded-md border-2 border-gray-100 border-t-4 odd:border-t-lamaSky even:border-t-lamaPurple"
+        >
+          <div class="flex items-center justify-between">
+            <h1 class="font-semibold text-gray-600">{{event.title}}</h1>
+            <span class="text-gray-300 text-xs">{{event.time}}</span>
+          </div>
+          <p class="mt-2 text-gray-400 text-sm">{{event.description}}</p>
+        </div>
+    </div>
+    <div *ngIf="events?.length === 0" class="flex flex-col gap-4">
+        <div class="bg-lamaYellow rounded-md p-4 ">
+      
+          <p class="text-gray-400 text-sm text-center ">          Don't have any events today
+        </p>
+        </div>
+    </div>
+  </div>
