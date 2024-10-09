@@ -372,7 +372,7 @@ export const menuItems = [
   export const events: Event[] = [
     {
       title: 'Meeting with Team',
-      date:  '2024-10-01', // October 1, 2023 (months are 0-indexed)
+      date:  '2024-10-09', // October 1, 2023 (months are 0-indexed)
       description: 'Discuss project updates and deadlines.',
       time:'12:00 PM - 2:00 PM'
     },

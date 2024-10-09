@@ -134,6 +134,17 @@
     <div class="mt-4 bg-white rounded-md p-4">
       <div class="flex justify-between items-center">
         <h1 class="text-lg font-semibold">Teacher&apos;s Schedule</h1>
+        <select
+        type="text"
+        [(ngModel)]="className"
+        name="className"
+        class="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm"
+        (change)="onChangeClass()"
+      >
+        <option *ngFor="let class of teahcerClasses" [value]="class.id">
+          {{ class.name }}
+        </option>
+      </select>
         <div class="flex justify-end items-center gap-x-2">
           <span
             (click)="setView(CalendarView.Day)"
@@ -171,7 +182,7 @@
           [hourSegmentHeight]="_commonService.getCalendarHourSegmentHeight()"
           [dayEndMinute]="_commonService.getCalendarDayEndMinute()"
           [weekStartsOn]="_commonService.getCalendarWeekStart()"
-          [events]="events"
+          [events]="filteredevents"
           [refresh]="refresh"
         >
         </mwl-calendar-week-view>
@@ -185,7 +196,7 @@
           [hourSegments]="_commonService.getCalendarHourSegments()"
           [hourSegmentHeight]="_commonService.getCalendarHourSegmentHeight()"
           [dayEndMinute]="_commonService.getCalendarDayEndMinute()"
-          [events]="events"
+          [events]="filteredevents"
           (eventClicked)="handleEvent($event.event)"
         >
         </mwl-calendar-day-view>

@@ -100,7 +100,7 @@
           <input type="text" formControlName="subject" name="subject" />
 
           <span
-            class="absolute text-sm left-0 top-[48%] text-red-500"
+            class="absolute text-sm left-0 top-[100%] text-red-500"
             *ngIf="
                         Schedule.get('subject').invalid && Schedule.get('subject').touched && Schedule.get('subject').errors?.['required'] 
                       "
